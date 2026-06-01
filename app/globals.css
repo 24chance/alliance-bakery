@@ -2,15 +2,15 @@
 
 /* ------------------------------------------------------------------ */
 /*  Alliance Bakery — design tokens                                    */
-/*  Palette pulled from the logo: warm chocolate-brown + soft cream,   */
-/*  lifted with a golden caramel and a playful berry-pink accent.      */
+/*  Palette: warm chocolate-brown + golden amber (night-light warmth)  */
+/*  lifted with caramel, berry-pink, and pistachio accents.            */
 /* ------------------------------------------------------------------ */
 @theme {
-  /* Creams (backgrounds / surfaces) */
-  --color-cream-50: #fffaf2;
-  --color-cream-100: #fdf3e4;
-  --color-cream-200: #f8e8d0;
-  --color-cream-300: #f1d9b6;
+  /* Creams — shifted to warm golden-amber (candlelight / night-light) */
+  --color-cream-50: #fffce8;
+  --color-cream-100: #fff4cc;
+  --color-cream-200: #ffe8a0;
+  --color-cream-300: #ffd97a;
 
   /* Chocolate (brand core — from the logo) */
   --color-choco-300: #a9785c;
@@ -22,10 +22,10 @@
   --color-choco-900: #241206;
 
   /* Caramel (golden warmth / primary accent) */
-  --color-caramel-300: #f1c98a;
-  --color-caramel-400: #e8b06a;
-  --color-caramel-500: #d9913f;
-  --color-caramel-600: #c2792b;
+  --color-caramel-300: #f5c862;
+  --color-caramel-400: #e8a830;
+  --color-caramel-500: #d48c1a;
+  --color-caramel-600: #b87015;
 
   /* Berry (playful pop) */
   --color-berry-300: #f2b3bf;
@@ -60,6 +60,24 @@
   from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+/* Horizontal auto-scrolling track (duplicate children for seamless loop). */
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee-pause:hover .marquee-track {
+  animation-play-state: paused;
+}
 
 /* ------------------------------------------------------------------ */
 /*  Base                                                               */
@@ -73,25 +91,36 @@
     color: var(--color-choco-800);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* chocolate-brown arrow cursor — normal arrow shape, brand colour */
+    cursor: url('/cursor-cake.svg') 2 1, auto;
+  }
+  a, button, [role="button"], label, select, input[type="submit"], input[type="button"] {
+    cursor: url('/cursor-cake.svg') 2 1, pointer;
   }
   ::selection {
     background-color: var(--color-caramel-400);
     color: var(--color-choco-900);
   }
-  /* Custom scrollbar — a little sprinkle of polish */
+  /* Warm amber custom scrollbar */
   ::-webkit-scrollbar { width: 12px; }
   ::-webkit-scrollbar-track { background: var(--color-cream-100); }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-caramel-500);
+    background: var(--color-caramel-400);
     border-radius: 999px;
     border: 3px solid var(--color-cream-100);
   }
 }
 
-/* Reusable utility: soft dotted "sprinkle" texture */
+/* Soft dotted texture using the new golden cream-300 */
 @utility sprinkle-dots {
   background-image: radial-gradient(var(--color-cream-300) 1.5px, transparent 1.5px);
   background-size: 22px 22px;
+}
+
+/* Warm candlelight ambient glow — used on hero/feature sections */
+@utility candlelight {
+  background: radial-gradient(ellipse at 50% 0%, var(--color-cream-200) 0%, var(--color-cream-50) 70%);
 }
 
 @media (prefers-reduced-motion: reduce) {

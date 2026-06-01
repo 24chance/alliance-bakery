@@ -37,6 +37,59 @@ export function Floaty({
   );
 }
 
+/**
+ * Scattered "cake sprinkles" — little coloured bars + dots that gently float.
+ * Positions are fixed (deterministic) so server/client markup matches, and they
+ * sit clear of the centre so headline text stays readable.
+ */
+const SPRINKLES: Array<{
+  top: string;
+  left: string;
+  rot: number;
+  cls: string;
+  dot?: boolean;
+}> = [
+  { top: "12%", left: "6%", rot: -25, cls: "bg-berry-400" },
+  { top: "22%", left: "14%", rot: 15, cls: "bg-caramel-500", dot: true },
+  { top: "40%", left: "5%", rot: 40, cls: "bg-pista-400" },
+  { top: "58%", left: "11%", rot: -15, cls: "bg-berry-300" },
+  { top: "74%", left: "7%", rot: 25, cls: "bg-caramel-400", dot: true },
+  { top: "16%", left: "26%", rot: -40, cls: "bg-pista-500", dot: true },
+  { top: "8%", left: "44%", rot: 20, cls: "bg-berry-400" },
+  { top: "18%", left: "62%", rot: -10, cls: "bg-caramel-400", dot: true },
+  { top: "10%", left: "78%", rot: 35, cls: "bg-pista-400" },
+  { top: "24%", left: "88%", rot: -30, cls: "bg-berry-400", dot: true },
+  { top: "40%", left: "94%", rot: 15, cls: "bg-caramel-500" },
+  { top: "57%", left: "90%", rot: -20, cls: "bg-pista-500", dot: true },
+  { top: "72%", left: "85%", rot: 30, cls: "bg-berry-300" },
+  { top: "82%", left: "72%", rot: -35, cls: "bg-caramel-400", dot: true },
+  { top: "86%", left: "40%", rot: 18, cls: "bg-pista-400" },
+  { top: "80%", left: "24%", rot: -22, cls: "bg-berry-400", dot: true },
+];
+
+export function Sprinkles({ className }: { className?: string }) {
+  return (
+    <div aria-hidden="true" className={cn("pointer-events-none absolute inset-0", className)}>
+      {SPRINKLES.map((s, i) => (
+        <span
+          key={i}
+          className="absolute animate-float"
+          style={{ top: s.top, left: s.left, animationDelay: `${(i % 6) * 0.45}s` }}
+        >
+          <span
+            className={cn(
+              "block opacity-70",
+              s.dot ? "h-2 w-2 rounded-full" : "h-1.5 w-5 rounded-full",
+              s.cls
+            )}
+            style={{ transform: `rotate(${s.rot}deg)` }}
+          />
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export function Croissant({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true">

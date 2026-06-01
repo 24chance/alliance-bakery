@@ -1,19 +1,24 @@
-import Link from "next/link";
+ import Link from "next/link";
 import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
-import { Logo } from "@/components/Logo";
 import { nav, site } from "@/lib/site";
 
 export function Footer() {
   return (
     <footer className="relative mt-24 overflow-hidden bg-choco-800 text-cream-100">
-      {/* scalloped top edge — like a paper doily / pie crust */}
-      <Scallop />
+      {/* scalloped pie-crust top edge */}
+      <FooterScallop />
 
       <div className="mx-auto grid max-w-6xl gap-12 px-6 pb-10 pt-20 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-1">
-          <Logo className="[&_*]:text-cream-100 [&_.text-caramel-600]:text-caramel-400" />
+          {/* The brand mark is chocolate-brown on transparent, so it would vanish
+              on the dark footer — we sit it on a cream "paper" badge instead,
+              which is exactly how the logo reads on its original background. */}
+          <span className="inline-flex rounded-3xl bg-cream-50 p-3 shadow-md ring-1 ring-cream-200/50">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo-tp.png" alt="Alliance Bakery" className="h-20 w-auto" />
+          </span>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream-200/80">
-            Authentic pastries, custom cakes, and daily bread — crafted with love
+            Authentic pastries, custom cakes, and daily bread crafted with love
             in the heart of {site.city}.
           </p>
         </div>
@@ -47,21 +52,27 @@ export function Footer() {
                 <span>{h.time}</span>
               </li>
             ))}
+            <li className="pt-1">
+              <span className="font-semibold text-cream-100">Also available in</span>
+              <span className="block">{site.locations.join(" · ")}</span>
+            </li>
           </ul>
         </div>
 
         <div>
           <h3 className="font-display text-lg font-semibold text-cream-50">Get in touch</h3>
           <ul className="mt-4 space-y-3 text-sm">
-            <li>
-              <a
-                href={site.phoneHref}
-                className="flex items-center gap-2.5 text-cream-200/80 transition-colors hover:text-caramel-300"
-              >
-                <Phone className="h-4 w-4 shrink-0 text-caramel-400" />
-                {site.phone}
-              </a>
-            </li>
+            {site.phones.map((p) => (
+              <li key={p.href}>
+                <a
+                  href={p.href}
+                  className="flex items-center gap-2.5 text-cream-200/80 transition-colors hover:text-caramel-300"
+                >
+                  <Phone className="h-4 w-4 shrink-0 text-caramel-400" />
+                  {p.display}
+                </a>
+              </li>
+            ))}
             <li>
               <a
                 href={`mailto:${site.email}`}
@@ -105,7 +116,7 @@ export function Footer() {
   );
 }
 
-function Scallop() {
+function FooterScallop() {
   return (
     <div
       aria-hidden="true"

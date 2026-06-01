@@ -23,11 +23,11 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   metadataBase: new URL("https://alliancebakery.rw"),
   title: {
-    default: `${site.name} — ${site.tagline}`,
+    default: `${site.name} - ${site.tagline}`,
     template: `%s · ${site.name}`,
   },
   description:
-    "Alliance Bakery in Kigali, Rwanda — authentic pastries, custom celebratory cakes, and freshly baked bread every single day. Open 24 hours on weekdays.",
+    "Alliance Bakery in Kigali - Rwanda, authentic pastries, custom celebratory cakes, and freshly baked bread every single day. Open 24/7.",
   keywords: [
     "bakery Kigali",
     "Alliance Bakery",
@@ -35,8 +35,12 @@ export const metadata: Metadata = {
     "fresh bread Kigali",
     "pastries Rwanda",
   ],
+  icons: {
+    icon: "/logo-tp.png",
+    apple: "/logo-tp.png",
+  },
   openGraph: {
-    title: `${site.name} — ${site.tagline}`,
+    title: `${site.name} - ${site.tagline}`,
     description:
       "Authentic pastries, custom cakes, and daily bread in the heart of Kigali, Rwanda.",
     type: "website",
