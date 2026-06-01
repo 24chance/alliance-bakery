@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Alliance Bakery — design tokens                                    */
+/*  Palette pulled from the logo: warm chocolate-brown + soft cream,   */
+/*  lifted with a golden caramel and a playful berry-pink accent.      */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Creams (backgrounds / surfaces) */
+  --color-cream-50: #fffaf2;
+  --color-cream-100: #fdf3e4;
+  --color-cream-200: #f8e8d0;
+  --color-cream-300: #f1d9b6;
+
+  /* Chocolate (brand core — from the logo) */
+  --color-choco-300: #a9785c;
+  --color-choco-400: #8a5638;
+  --color-choco-500: #6f4226;
+  --color-choco-600: #5a3220;
+  --color-choco-700: #46260f;
+  --color-choco-800: #331a0a;
+  --color-choco-900: #241206;
+
+  /* Caramel (golden warmth / primary accent) */
+  --color-caramel-300: #f1c98a;
+  --color-caramel-400: #e8b06a;
+  --color-caramel-500: #d9913f;
+  --color-caramel-600: #c2792b;
+
+  /* Berry (playful pop) */
+  --color-berry-300: #f2b3bf;
+  --color-berry-400: #e58b9a;
+  --color-berry-500: #d96a7e;
+
+  /* Pistachio (tiny fresh accent, used sparingly) */
+  --color-pista-400: #a9c08a;
+  --color-pista-500: #8aa867;
+
+  --font-display: var(--font-fredoka), "Comic Sans MS", cursive, sans-serif;
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-blob: 42% 58% 63% 37% / 41% 44% 56% 59%;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-wiggle: wiggle 2.5s ease-in-out infinite;
+  --animate-rise: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-spin-slow: spin 14s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(-3deg); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-cream-50);
+    color: var(--color-choco-800);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background-color: var(--color-caramel-400);
+    color: var(--color-choco-900);
+  }
+  /* Custom scrollbar — a little sprinkle of polish */
+  ::-webkit-scrollbar { width: 12px; }
+  ::-webkit-scrollbar-track { background: var(--color-cream-100); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-caramel-500);
+    border-radius: 999px;
+    border: 3px solid var(--color-cream-100);
+  }
+}
+
+/* Reusable utility: soft dotted "sprinkle" texture */
+@utility sprinkle-dots {
+  background-image: radial-gradient(var(--color-cream-300) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
