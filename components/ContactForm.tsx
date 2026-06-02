@@ -4,11 +4,7 @@ import { useState, useRef, type FormEvent } from "react";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORM_KEY
-  ? process.env.NEXT_PUBLIC_WEB3FORM_KEY
-  : "";
-
-  console.log(WEB3FORMS_KEY)
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORM_KEY ?? "";
 
 const subjects = [
   "Custom cake order",
@@ -35,7 +31,7 @@ export function ContactForm() {
     const payload = {
       access_key: WEB3FORMS_KEY,
       // Customise the subject line that arrives in the inbox.
-      subject: `Alliance Bakery — ${formData.get("subject") ?? "New message"}`,
+      subject: `Alliance Bakery - ${formData.get("subject") ?? "New message"}`,
       // "from_name" shows who sent it in the email client.
       from_name: (formData.get("name") as string) ?? "Website visitor",
       // Fields Web3Forms forwards verbatim:
@@ -83,7 +79,7 @@ export function ContactForm() {
           Message sent!
         </h3>
         <p className="mt-2 max-w-sm text-choco-500">
-          Thanks for reaching out. We&apos;ll get back to you as soon as possible —
+          Thanks for reaching out. We&apos;ll get back to you as soon as possible, 
           usually within the day.
         </p>
         <button
@@ -180,7 +176,7 @@ export function ContactForm() {
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           <span>
             {WEB3FORMS_KEY === "YOUR_ACCESS_KEY_HERE"
-              ? "No access key set yet — add your Web3Forms key to components/ContactForm.tsx to activate sending."
+              ? "No access key set yet, add your Web3Forms key to components/ContactForm.tsx to activate sending."
               : errorMsg || "Something went wrong. Please try again or call us directly."}
           </span>
         </div>

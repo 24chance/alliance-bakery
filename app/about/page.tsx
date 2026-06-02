@@ -22,7 +22,7 @@ const commitments = [
   {
     icon: Users,
     title: "Community First",
-    body: "Proudly rooted in Rwanda — supporting local staff and feeding our neighbourhood, every single day.",
+    body: "Proudly rooted in Rwanda, supporting local staff and feeding our neighbourhood, every single day.",
     tint: "bg-berry-400/20 text-berry-500",
   },
   {
@@ -172,7 +172,6 @@ function Story() {
         </Reveal>
 
         <Reveal delay={120}>
-          <Eyebrow>How it began</Eyebrow>
           <p className="mt-6 text-lg leading-relaxed text-choco-600">
             Alliance Bakery was founded with a simple mission: to elevate the
             local baking scene in Kigali by blending{" "}

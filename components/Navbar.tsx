@@ -32,7 +32,7 @@ export function Navbar() {
             : "border-transparent bg-cream-50/60 backdrop-blur-sm"
         )}
       >
-        <Link href="/" aria-label="Alliance Bakery — home" className="shrink-0">
+        <Link href="/" aria-label="Alliance Bakery - home" className="shrink-0">
           <img
             src="/logo-tp.png"
             alt="Alliance Bakery"

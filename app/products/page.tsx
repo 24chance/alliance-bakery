@@ -9,14 +9,14 @@ import { customCakeCover, galleryCakes } from "@/lib/cakes";
 export const metadata: Metadata = {
   title: "Products & Services",
   description:
-    "Fresh bread, croissants, sambusa, sandwiches, pizza, juices and milk — plus custom celebratory cakes from Alliance Bakery, Kigali.",
+    "Fresh bread, croissants, sambusa, sandwiches, pizza, juices and milk plus custom celebratory cakes from Alliance Bakery, Kigali.",
 };
 
 const categories = [
   {
     tag: "A",
     title: "Fresh from the Oven",
-    body: "Golden, flaky pastries and breads baked fresh throughout the day — perfect with your morning coffee.",
+    body: "Golden, flaky pastries and breads baked fresh throughout the day, perfect with your morning coffee.",
     items: ["Fresh daily bread", "Croissant", "Sambusa"],
     // three images shown as a small collage in the card header
     imgs: ["/others/croissant.jpeg", "/others/bread.jpeg", "/others/sambusa.jpg"],
@@ -74,12 +74,11 @@ function Categories() {
   return (
     <section className="mx-auto max-w-6xl px-6 pt-32 pb-8 sm:pt-40">
       <Reveal className="mb-12">
-        <Eyebrow>What we bake</Eyebrow>
         <h1 className="mt-4 font-display text-4xl font-bold text-choco-800 sm:text-5xl">
           Made fresh, made for you.
         </h1>
-        <p className="mt-3 max-w-xl text-lg text-choco-500">
-          From morning pastries to milestone cakes — everything out of our Kigali kitchen.
+        <p className="mt-3 max-w-full text-lg text-choco-500">
+          From morning pastries to milestone cakes. Everything out of our kitchen.
         </p>
       </Reveal>
       <div className="grid gap-7 lg:grid-cols-3">
@@ -156,7 +155,7 @@ function CakesFeature() {
               Custom & Celebratory Cakes
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-cream-200/85">
-              Tiered wedding cakes, themed birthday cakes, and elegant cupcakes —
+              Tiered wedding cakes, themed birthday cakes, and elegant cupcakes
               customised to your preferred flavour, size, and design. Whatever the
               occasion, we'll bake something unforgettable.
             </p>
@@ -259,7 +258,7 @@ function Cta() {
           Ready to place an order?
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-lg text-choco-500">
-          Reach out and let's get baking — whether it's a single loaf or a five-tier
+          Reach out and let's get baking, whether it's a single loaf or a five-tier
           showstopper.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

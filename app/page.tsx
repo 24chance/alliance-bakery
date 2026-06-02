@@ -98,7 +98,7 @@ function Hero() {
                 key={i}
                 src={src}
                 alt="A freshly made Alliance Bakery cake"
-                priority={i < 4}
+                priority // all marquee photos are above the fold — eager-load every one
                 className={`h-44 w-36 shrink-0 rounded-[1.6rem] shadow-lg ring-4 ring-cream-50 sm:h-52 sm:w-44 ${
                   i % 2 ? "rotate-2" : "-rotate-2"
                 }`}
@@ -188,19 +188,22 @@ const features = [
     icon: Wheat,
     title: "Daily Freshness",
     body: "We bake in small batches throughout the day to ensure every single bite is perfectly fresh.",
-    tint: "bg-caramel-400/20 text-caramel-600",
+    headerBg: "bg-caramel-500",
+    drip: "#d48c1a",     // caramel-500 for the drip drops
   },
   {
     icon: Cake,
     title: "Custom Cakes",
     body: "From weddings to birthdays, we bring your dream cake designs to delicious, edible life.",
-    tint: "bg-berry-400/20 text-berry-500",
+    headerBg: "bg-berry-500",
+    drip: "#d96a7e",     // berry-500
   },
   {
     icon: Clock,
     title: "24/7 Service",
     body: "Craving a late-night treat or an early breakfast? We're open around the clock, every single day.",
-    tint: "bg-pista-400/25 text-pista-500",
+    headerBg: "bg-pista-500",
+    drip: "#8aa867",     // pista-500
   },
 ];
 
@@ -217,14 +220,47 @@ function Highlights() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {features.map((f, i) => (
             <Reveal key={f.title} delay={i * 120}>
-              <article className="group h-full rounded-[2rem] bg-cream-50 p-8 shadow-lg transition-transform duration-300 hover:-translate-y-2">
-                <div className={`grid h-14 w-14 place-items-center rounded-2xl ${f.tint} transition-transform duration-300 group-hover:animate-wiggle`}>
-                  <f.icon className="h-7 w-7" />
+              <article className="group h-full overflow-hidden rounded-[2rem] bg-cream-50 shadow-lg transition-transform duration-300 hover:-translate-y-2">
+
+                {/* ── Coloured header ── */}
+                <div className={`flex items-center justify-center px-6 pt-8 pb-4 ${f.headerBg}`}>
+                  <div className="grid h-16 w-16 place-items-center rounded-full bg-cream-50/25 ring-2 ring-cream-50/40 transition-transform duration-300 group-hover:animate-wiggle">
+                    <f.icon className="h-8 w-8 text-cream-50" />
+                  </div>
                 </div>
-                <h3 className="mt-5 font-display text-2xl font-semibold text-choco-800">
-                  {f.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-choco-500">{f.body}</p>
+
+                {/*
+                  ── Drip zone ──
+                  Sits in normal document flow between header and body — NOT absolute.
+                  The SVG has a cream base rect so the whole block is cream-coloured,
+                  then three coloured drops start from y=0 (flush with the header above)
+                  and drip downward. overflow-hidden on the article never clips these
+                  because they're fully inside the article's height.
+                */}
+                <svg
+                  viewBox="0 0 300 50"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                  className="block w-full"
+                  style={{ height: "30px", marginTop: "-1px" }}
+                >
+                  <rect x="0" y="0" width="300" height="50" fill="#fffce8" />
+                  {/* left drop */}
+                  <path d="M40 0 H78 V28 Q78 40 59 40 Q40 40 40 28 Z" fill={f.drip} />
+                  {/* centre drop — tallest */}
+                  <path d="M131 0 H169 V34 Q169 50 150 50 Q131 50 131 34 Z" fill={f.drip} />
+                  {/* right drop */}
+                  <path d="M222 0 H260 V24 Q260 36 241 36 Q222 36 222 24 Z" fill={f.drip} />
+                </svg>
+
+                {/* ── Content ── */}
+                <div className="px-7 pb-8 pt-2">
+                  <h3 className="font-display text-2xl font-semibold text-choco-800">
+                    {f.title}
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-choco-500">{f.body}</p>
+                </div>
+
               </article>
             </Reveal>
           ))}
@@ -242,9 +278,6 @@ function FavouriteCakes() {
     <section className="mx-auto max-w-6xl px-6 py-20">
       <Reveal className="flex flex-col items-center justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full bg-berry-400/15 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-berry-500">
-            <span className="h-1.5 w-1.5 rounded-full bg-berry-400" /> Straight from our oven
-          </span>
           <h2 className="mt-4 font-display text-4xl font-bold text-choco-800 sm:text-5xl">
             Cakes our customers love.
           </h2>
@@ -290,10 +323,10 @@ function MenuSection() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {menu.map((item, i) => (
             <Reveal key={item.name} delay={(i % 3) * 80}>
-              <article className="group flex h-full items-center gap-4 rounded-[1.5rem] border border-cream-200 bg-cream-50 p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-4">
+              <article className="group flex h-full items-center gap-4 rounded-[1.5rem] border border-cream-200 bg-cream-50 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                 <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -305,10 +338,10 @@ function MenuSection() {
                   />
                 </span>
                 <div className="min-w-0">
-                  <h3 className="font-display text-lg font-semibold text-choco-800">
+                  <h3 className="font-display text-lg font-semibold leading-tight text-choco-800">
                     {item.name}
                   </h3>
-                  <p className="text-sm font-medium text-caramel-600">{item.note}</p>
+                  <p className="mt-0.5 text-sm font-medium text-caramel-600">{item.note}</p>
                 </div>
               </article>
             </Reveal>
@@ -338,7 +371,7 @@ function CtaBand() {
             Planning something sweet?
           </h2>
           <p className="relative mx-auto mt-4 max-w-xl text-lg text-cream-50/90">
-            Tell us about your dream cake or place an order — we'd love to bake for you.
+            Tell us about your dream cake or place an order, we'd love to bake for you.
           </p>
           <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button href="/contact" className="bg-choco-800 hover:bg-choco-900">
