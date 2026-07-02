@@ -19,10 +19,10 @@ const nextConfig = {
   // Enable gzip/brotli compression
   compress: true,
 
-  // Canonical URL consistency — no trailing slashes
+  // Canonical URL consistency - no trailing slashes
   trailingSlash: false,
 
-  // 301 redirects — preserves SEO equity when URLs change
+  // 301 redirects - preserves SEO equity when URLs change
   async redirects() {
     return [
       // Example: redirect legacy /course/:id to /courses/:id

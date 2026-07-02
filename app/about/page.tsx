@@ -45,7 +45,7 @@ export default function AboutPage() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Hero — real photo background                                               */
+/*  Hero - real photo background                                               */
 /* -------------------------------------------------------------------------- */
 function PageHero() {
   return (
@@ -90,7 +90,7 @@ function PageHero() {
         </div>
       </div>
 
-      {/* SVG wave curve — cream fill eats into the bottom of the hero photo */}
+      {/* SVG wave curve - cream fill eats into the bottom of the hero photo */}
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 leading-none">
         <svg
           viewBox="0 0 1440 72"

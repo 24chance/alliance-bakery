@@ -98,7 +98,7 @@ function Hero() {
                 key={i}
                 src={src}
                 alt="A freshly made Alliance Bakery cake"
-                priority // all marquee photos are above the fold — eager-load every one
+                priority // all marquee photos are above the fold - eager-load every one
                 className={`h-44 w-36 shrink-0 rounded-[1.6rem] shadow-lg ring-4 ring-cream-50 sm:h-52 sm:w-44 ${
                   i % 2 ? "rotate-2" : "-rotate-2"
                 }`}
@@ -231,7 +231,7 @@ function Highlights() {
 
                 {/*
                   ── Drip zone ──
-                  Sits in normal document flow between header and body — NOT absolute.
+                  Sits in normal document flow between header and body - NOT absolute.
                   The SVG has a cream base rect so the whole block is cream-coloured,
                   then three coloured drops start from y=0 (flush with the header above)
                   and drip downward. overflow-hidden on the article never clips these
@@ -247,7 +247,7 @@ function Highlights() {
                   <rect x="0" y="0" width="300" height="50" fill="#fffce8" />
                   {/* left drop */}
                   <path d="M40 0 H78 V28 Q78 40 59 40 Q40 40 40 28 Z" fill={f.drip} />
-                  {/* centre drop — tallest */}
+                  {/* centre drop - tallest */}
                   <path d="M131 0 H169 V34 Q169 50 150 50 Q131 50 131 34 Z" fill={f.drip} />
                   {/* right drop */}
                   <path d="M222 0 H260 V24 Q260 36 241 36 Q222 36 222 24 Z" fill={f.drip} />

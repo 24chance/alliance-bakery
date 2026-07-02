@@ -1,5 +1,5 @@
 /**
- * Central site configuration — everything across the site reads from here.
+ * Central site configuration - everything across the site reads from here.
  */
 export const site = {
   name: "Alliance Bakery",
@@ -35,4 +35,5 @@ export const nav = [
   { label: "Home", href: "/" },
   { label: "Our Story", href: "/about" },
   { label: "Products", href: "/products" },
+  { label: "Gallery", href: "/gallery" },
 ] as const;

@@ -38,7 +38,7 @@ export function Floaty({
 }
 
 /**
- * Scattered "cake sprinkles" — little coloured bars + dots that gently float.
+ * Scattered "cake sprinkles" - little coloured bars + dots that gently float.
  * Positions are fixed (deterministic) so server/client markup matches, and they
  * sit clear of the centre so headline text stays readable.
  */

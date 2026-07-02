@@ -40,7 +40,7 @@ export function ContactForm() {
       email:   formData.get("email"),
       enquiry: formData.get("subject"),
       message: formData.get("message"),
-      // Botcheck honeypot — leave this false; Web3Forms ignores real humans.
+      // Botcheck honeypot - leave this false; Web3Forms ignores real humans.
       botcheck: false,
     };
 
@@ -100,7 +100,7 @@ export function ContactForm() {
       onSubmit={handleSubmit}
       className="rounded-[2rem] border border-cream-200 bg-cream-50 p-6 shadow-sm sm:p-8"
     >
-      {/* Web3Forms honeypot — hidden from real users, catches bots */}
+      {/* Web3Forms honeypot - hidden from real users, catches bots */}
       <input type="checkbox" name="botcheck" className="hidden" aria-hidden="true" />
 
       <div className="grid gap-5 sm:grid-cols-2">

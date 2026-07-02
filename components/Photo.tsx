@@ -25,7 +25,7 @@ export function Photo({
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    // Cached images finish loading before React attaches onLoad — catch them here.
+    // Cached images finish loading before React attaches onLoad - catch them here.
     const img = imgRef.current;
     if (img && img.complete && img.naturalWidth > 0) {
       setLoaded(true);

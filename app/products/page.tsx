@@ -206,9 +206,12 @@ function CakeGallery() {
         ))}
       </div>
 
-      <Reveal className="mt-10 text-center">
-        <Button href="/contact" variant="primary">
-          Request your own design <ArrowRight className="h-4 w-4" />
+      <Reveal className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <Button href="/gallery" variant="primary">
+          View full gallery <ArrowRight className="h-4 w-4" />
+        </Button>
+        <Button href="/contact" variant="ghost">
+          Request your own design
         </Button>
       </Reveal>
     </section>

@@ -11,7 +11,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-12 px-6 pb-10 pt-20 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-1">
           {/* The brand mark is chocolate-brown on transparent, so it would vanish
-              on the dark footer — we sit it on a cream "paper" badge instead,
+              on the dark footer - we sit it on a cream "paper" badge instead,
               which is exactly how the logo reads on its original background. */}
           <span className="inline-flex rounded-3xl bg-cream-50 p-3 shadow-md ring-1 ring-cream-200/50">
             {/* eslint-disable-next-line @next/next/no-img-element */}

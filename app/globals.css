@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/*  Alliance Bakery — design tokens                                    */
+/*  Alliance Bakery - design tokens                                    */
 /*  Palette: warm chocolate-brown + golden amber (night-light warmth)  */
 /*  lifted with caramel, berry-pink, and pistachio accents.            */
 /* ------------------------------------------------------------------ */
 @theme {
-  /* Creams — shifted to warm golden-amber (candlelight / night-light) */
+  /* Creams - shifted to warm golden-amber (candlelight / night-light) */
   --color-cream-50: #fffce8;
   --color-cream-100: #fff4cc;
   --color-cream-200: #ffe8a0;
   --color-cream-300: #ffd97a;
 
-  /* Chocolate (brand core — from the logo) */
+  /* Chocolate (brand core - from the logo) */
   --color-choco-300: #a9785c;
   --color-choco-400: #8a5638;
   --color-choco-500: #6f4226;
@@ -96,7 +96,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* chocolate-brown arrow cursor — normal arrow shape, brand colour */
+    /* chocolate-brown arrow cursor - normal arrow shape, brand colour */
     cursor: url('/cursor-cake.svg') 2 1, auto;
   }
   a, button, [role="button"], label, select, input[type="submit"], input[type="button"] {
@@ -122,7 +122,7 @@
   background-size: 22px 22px;
 }
 
-/* Warm candlelight ambient glow — used on hero/feature sections */
+/* Warm candlelight ambient glow - used on hero/feature sections */
 @utility candlelight {
   background: radial-gradient(ellipse at 50% 0%, var(--color-cream-200) 0%, var(--color-cream-50) 70%);
 }
